@@ -1,0 +1,12 @@
+- name: ping
+  hosts: web
+  tasks: 
+  - name: ping the server
+    ansible.builtin.ping:
+
+  gmail: gollavillisrinu09@gmail.com
+  Address: 
+  - type: perm
+    Door No: 123
+  - type : present
+    Door No: 321
