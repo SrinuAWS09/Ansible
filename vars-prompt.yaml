@@ -1,6 +1,6 @@
 - name: variables from files
   hosts: local
-  connection: localadd
+  connection: local
   vars_prompt:
   - name: Course
     prompt: please enter course name
