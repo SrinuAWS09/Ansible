@@ -6,11 +6,11 @@
     ansible.builtin.debug:
       msg: "Hello from Play1 and task1"
 
-- name: play1
+- name: play2
   hosts: local
   connection: local
   tasks:
   - name: play1 and task1
     ansible.builtin.debug:
-      msg: "Hello from Play1 and task1"
+      msg: "Hello from Play2 and task2"
  
