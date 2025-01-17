@@ -6,7 +6,7 @@
     Duration: 120 Hours
     Trainer: Sivakumar
 
-  # tasks:
+  tasks:
   # - name: print the variables
   #   vars:
   #     course: Ansible
