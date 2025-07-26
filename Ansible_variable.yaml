@@ -1,0 +1,13 @@
+- name: variable declaration
+  hosts: web
+  var:
+    course: devsecops
+    duration: 120 hrs
+    trainer: Siva
+  tasks:
+    - name: print the information
+      Ansible.builtin.debug:
+        msg: "hi, {{course}} course, duration is {{duration}} hrs, trainer is {{trainer}}"
+
+
+
