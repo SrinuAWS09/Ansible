@@ -1,6 +1,6 @@
 - name: variable declaration
   hosts: web
-  var:
+  vars:
     course: devsecops
     duration: 120 hrs
     trainer: Siva
