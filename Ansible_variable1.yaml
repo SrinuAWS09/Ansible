@@ -1,0 +1,8 @@
+- name: variables
+  hosts: web
+  vars_files:
+  - Ansible_variable_declaration.yaml
+  tasks:
+  - name: about variables
+    ansible.builtin.debug:
+    msg: "I'm {{course}}  course and duration {{duration}} and trainer is {{Siva}}"
