@@ -1,0 +1,22 @@
+- name: devsecops
+  hosts: local
+  connection: local
+  vars: 
+    course: devsecops
+    duration: 120 Hrs
+    topics: 
+    - Linux
+    - shell scripting
+    - ansible
+    - Terraform
+    live: true
+    tools:
+      ci: jenkins
+      cloud: aws
+      aws:
+      - s3
+      - ec2
+  tasks:
+  - name: details
+    anisble.builtin.debug:
+      msg: "HI learning course is {{devops}} durtion is {{duration}} and topics are {{topics}} and live is {{}} tools are {{tools}}"
