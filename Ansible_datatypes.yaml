@@ -18,5 +18,5 @@
       - ec2
   tasks:
   - name: details
-    anisble.builtin.debug:
+    ansible.builtin.debug:
       msg: "HI learning course is {{devops}} durtion is {{duration}} and topics are {{topics}} and live is {{live}} tools are {{tools}}"
