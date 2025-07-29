@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    vpc_subnet_id: "subnet-0cd6901969f407915"
+    vpc_subnet_id: subnet-0cd6901969f407915
     security_group_id: "sg-069bfb3036a603583"
     ami_id: "ami-09c813fb71547fc4f"
     instances:
