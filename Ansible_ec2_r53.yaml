@@ -20,11 +20,11 @@
       security_group: "{{ security_group_id }}"
       image_id: "{{ ami_id }}" 
     loop: "{{ instances }}"
-    register: ec2_instance
+    register: ec2_instances
   
   - name: prin the message
     ansible.builtin.debug:
-      msg: "{{ ec2_instance }}"
+      msg: "{{ ec2_instances }}"
 
   - name: route 53
     amazon.aws.route53:
@@ -33,10 +33,10 @@
       record: "{{ item.item }}.{{ zone }}"
       type: A
       ttl: 1
-      value: "{{ item.instance[0].private_ip_address }}"
+      value: "{{ item.instances[0].private_ip_address }}"
       wait: true
       overwrite: true
-    loop: "{{ ec2_instance.results}}"
+    loop: "{{ ec2_instances.results}}"
 
   - name: route public 53
     amazon.aws.route53:
@@ -45,11 +45,11 @@
       record: "{{ zone }}"
       type: A
       ttl: 1
-      value: "{{ item.instance[0].public_ip_address }}"
+      value: "{{ item.instances[0].public_ip_address }}"
       wait: true
       overwrite: true
-    loop: "{{ ec2_instance.results}}" 
-    when: ec2_instance.results.item == "frontend"
+    loop: "{{ ec2_instances.results}}" 
+    when: ec2_instances.results.item == "frontend"
 
 
 
