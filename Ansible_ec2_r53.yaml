@@ -4,7 +4,7 @@
   vars:
     vpc_subnet_id: "subnet-0cd6901969f407915"
     security_group_id: "sg-069bfb3036a603583"
-    vpc_id: "vpc-08aa553e0925a3327"
+    ami_id: "ami-09c813fb71547fc4f"
     instances:
     - mysql
     - backend
@@ -17,7 +17,7 @@
       vpc_subnet_id: "{{ vpc_subnet_id }}"
       instance_type: "t3.micro"
       security_group: "{{ security_group_id }}"
-      image_id: "{{ vpc_id }}" 
+      image_id: "{{ ami_id }}" 
     loop: "{{ instances }}"
     register: ec2_instance
 
