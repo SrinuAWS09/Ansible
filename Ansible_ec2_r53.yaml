@@ -5,6 +5,7 @@
     vpc_subnet_id: subnet-0cd6901969f407915
     security_group_id: "sg-069bfb3036a603583"
     ami_id: "ami-09c813fb71547fc4f"
+    zone: "daws82srinu.com"
     instances:
     - mysql
     - backend
@@ -24,6 +25,31 @@
   - name: prin the message
     ansible.builtin.debug:
       msg: "{{ ec2_instance }}"
+
+  - name: route 53
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instance[0].private_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_instance.results}}"
+
+  - name: route public 53
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instance[0].public_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_instance.results}}" 
+    when: ec2_instance.results.item == "frontend"
 
 
 
